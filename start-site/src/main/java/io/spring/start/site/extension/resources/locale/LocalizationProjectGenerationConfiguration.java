@@ -14,32 +14,25 @@
  * limitations under the License.
  */
 
-package io.spring.start.site.extension.properties;
+package io.spring.start.site.extension.resources.locale;
 
-import io.spring.initializr.generator.project.ProjectDescription;
+import io.spring.initializr.generator.condition.ConditionalOnRequestedDependency;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 
 import org.springframework.context.annotation.Bean;
 
 /**
- * {@link ProjectGenerationConfiguration} for customizations relevant to the application
- * properties.
+ * Project generation configuration for Tapsi localization support.
  *
- * @author Moritz Halbritter
  * @author Shahryar Safizadeh
  */
 @ProjectGenerationConfiguration
-class ApplicationPropertiesProjectGenerationConfiguration {
+public class LocalizationProjectGenerationConfiguration {
 
 	@Bean
-	DefaultApplicationPropertiesCustomizer defaultApplicationPropertiesContributorCustomizer(
-			ProjectDescription projectDescription) {
-		return new DefaultApplicationPropertiesCustomizer(projectDescription);
-	}
-
-	@Bean
-	ProfilesApplicationPropertiesContributor profilesContributor() {
-		return new ProfilesApplicationPropertiesContributor();
+	@ConditionalOnRequestedDependency("tapsi-localization")
+	TapsiBoxLocalizationProjectContributor tapsiLocalizationProjectContributor() {
+		return new TapsiBoxLocalizationProjectContributor();
 	}
 
 }

@@ -14,32 +14,29 @@
  * limitations under the License.
  */
 
-package io.spring.start.site.extension.properties;
+package io.spring.start.site.extension.dependency.tapsibox.fixture;
 
+import io.spring.initializr.generator.condition.ConditionalOnRequestedDependency;
+import io.spring.initializr.generator.io.template.TemplateRenderer;
 import io.spring.initializr.generator.project.ProjectDescription;
 import io.spring.initializr.generator.project.ProjectGenerationConfiguration;
 
 import org.springframework.context.annotation.Bean;
 
 /**
- * {@link ProjectGenerationConfiguration} for customizations relevant to the application
- * properties.
+ * Project generation configuration for adding the Fixture test helper class when the
+ * {@code fixture} dependency is requested.
  *
- * @author Moritz Halbritter
  * @author Shahryar Safizadeh
  */
 @ProjectGenerationConfiguration
-class ApplicationPropertiesProjectGenerationConfiguration {
+public class FixtureProjectGenerationConfiguration {
 
 	@Bean
-	DefaultApplicationPropertiesCustomizer defaultApplicationPropertiesContributorCustomizer(
-			ProjectDescription projectDescription) {
-		return new DefaultApplicationPropertiesCustomizer(projectDescription);
-	}
-
-	@Bean
-	ProfilesApplicationPropertiesContributor profilesContributor() {
-		return new ProfilesApplicationPropertiesContributor();
+	@ConditionalOnRequestedDependency("fixture")
+	FixtureTestHelperContributor fixtureTestHelperContributor(TemplateRenderer renderer,
+			ProjectDescription description) {
+		return new FixtureTestHelperContributor(renderer, description);
 	}
 
 }
