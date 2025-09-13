@@ -97,6 +97,8 @@ initializr:
             version: 2024.0.2
           - compatibilityRange: "[3.5.0-M1,4.0.0-M1)"
             version: 2025.0.0
+          - compatibilityRange: "[4.0.0-M1,4.1.0-M1)"
+            version: 2025.1.0-M1
       spring-cloud-azure:
         groupId: com.azure.spring
         artifactId: spring-cloud-azure-dependencies
@@ -111,9 +113,9 @@ initializr:
         additionalBoms: [ spring-cloud ]
         mappings:
           - compatibilityRange: "[3.4.0,3.5.0-M1)"
-            version: 6.3.0
+            version: 6.3.3
           - compatibilityRange: "[3.5.0,4.0.0-M1)"
-            version: 7.1.0
+            version: 7.3.0
       spring-cloud-services:
         groupId: io.pivotal.spring.cloud
         artifactId: spring-cloud-services-dependencies
@@ -140,6 +142,8 @@ initializr:
             version: 1.3.7
           - compatibilityRange: "[3.5.0-M1,4.0.0-M1)"
             version: 1.4.1
+          - compatibilityRange: "[4.0.0-M1,4.1.0-M1)"
+            version: 2.0.0-M2
       spring-shell:
         groupId: org.springframework.shell
         artifactId: spring-shell-dependencies
@@ -160,16 +164,16 @@ initializr:
         versionProperty: timefold-solver.version
         mappings:
           - compatibilityRange: "[3.4.0,4.0.0-M1)"
-            version: 1.25.0
+            version: 1.26.0
       vaadin:
         groupId: com.vaadin
         artifactId: vaadin-bom
         versionProperty: vaadin.version
         mappings:
           - compatibilityRange: "[3.4.0,3.5.0-M1)"
-            version: 24.7.11
+            version: 24.7.13
           - compatibilityRange: "[3.5.0-M1,4.0.0-M1)"
-            version: 24.8.6
+            version: 24.8.8
     platform:
       compatibilityRange: "3.4.0"
   dependencies:
@@ -228,7 +232,7 @@ initializr:
         - name: Spring Modulith
           id: modulith
           bom: spring-modulith
-          compatibilityRange: "[3.4.0,4.0.0-M1)"
+          compatibilityRange: "[3.4.0,4.1.0-M1)"
           group-id: org.springframework.modulith
           artifact-id: spring-modulith-starter-core
           description: Support for building modular monolithic applications.
@@ -404,6 +408,7 @@ initializr:
         - name: Jersey
           id: jersey
           description: Framework for developing RESTful Web Services in Java that provides support for JAX-RS APIs.
+          compatibilityRange: "[3.4.0,4.0.0-M2]"
           facets:
             - json
           links:
@@ -525,6 +530,16 @@ initializr:
           links:
             - rel: reference
               href: https://docs.spring.io/spring-boot/{bootVersion}/reference/web/spring-security.html#web.security.oauth2.server
+        - name: WebAuthn for Spring Security
+          id: spring-security-webauthn
+          starter: false
+          compatibility-range: "4.0.0-M1"
+          group-id: org.springframework.security
+          artifact-id: spring-security-webauthn
+          description: Support for WebAuthn in Spring Security.
+          links:
+            - rel: reference
+              href: https://docs.spring.io/spring-security/reference/servlet/authentication/passkeys.html
         - name: Spring LDAP
           id: data-ldap
           description: Makes it easier to build Spring based applications that use the Lightweight Directory Access Protocol.
@@ -902,7 +917,7 @@ initializr:
             - compatibilityRange: "[3.4.0,3.5.0-M1)"
               version: 4.11.0
             - compatibilityRange: "[3.5.0,4.0.0-M1)"
-              version: 4.13.0
+              version: 4.14.0
           description: Apache Camel is an open source integration framework that empowers you to quickly and easily integrate various systems consuming or producing data.
           groupId: org.apache.camel.springboot
           artifactId: camel-spring-boot-starter
@@ -1159,7 +1174,7 @@ initializr:
               href: https://java.testcontainers.org/
         - name: Contract Verifier
           bom: spring-cloud
-          compatibilityRange: "[3.4.0,4.0.0-M1)"
+          compatibilityRange: "[3.4.0,4.1.0-M1)"
           id: cloud-contract-verifier
           description: Moves TDD to the level of software architecture by enabling Consumer Driven Contract (CDC) development.
           groupId: org.springframework.cloud
@@ -1170,7 +1185,7 @@ initializr:
               href: https://docs.spring.io/spring-cloud-contract/reference/
         - name: Contract Stub Runner
           bom: spring-cloud
-          compatibilityRange: "[3.4.0,4.0.0-M1)"
+          compatibilityRange: "[3.4.0,4.1.0-M1)"
           id: cloud-contract-stub-runner
           description: Stub Runner for HTTP/Messaging based communication. Allows creating WireMock stubs from RestDocs tests.
           groupId: org.springframework.cloud
@@ -1195,7 +1210,7 @@ initializr:
               href: https://docs.spring.io/spring-boot/{bootVersion}/reference/data/nosql.html#data.nosql.ldap.embedded
     - name: Spring Cloud
       bom: spring-cloud
-      compatibilityRange: "[3.4.0,4.0.0-M1)"
+      compatibilityRange: "[3.4.0,4.1.0-M1)"
       content:
         - name: Cloud Bootstrap
           id: cloud-starter
@@ -1227,7 +1242,7 @@ initializr:
               href: https://docs.spring.io/spring-cloud-task/reference/
     - name: Spring Cloud Config
       bom: spring-cloud
-      compatibilityRange: "[3.4.0,4.0.0-M1)"
+      compatibilityRange: "[3.4.0,4.1.0-M1)"
       content:
         - name: Config Client
           id: cloud-config-client
@@ -1274,7 +1289,7 @@ initializr:
               href: https://docs.spring.io/spring-cloud-consul/reference/
     - name: Spring Cloud Discovery
       bom: spring-cloud
-      compatibilityRange: "[3.4.0,4.0.0-M1)"
+      compatibilityRange: "[3.4.0,4.1.0-M1)"
       content:
         - name: Eureka Discovery Client
           id: cloud-eureka
@@ -1316,7 +1331,7 @@ initializr:
               href: https://docs.spring.io/spring-cloud-consul/reference/discovery.html
     - name: Spring Cloud Routing
       bom: spring-cloud
-      compatibilityRange: "[3.4.0,4.0.0-M1)"
+      compatibilityRange: "[3.4.0,4.1.0-M1)"
       content:
         - name: Gateway
           id: cloud-gateway
@@ -1324,7 +1339,7 @@ initializr:
             - compatibility-range: "[3.4.0,3.5.0-M1)"
               groupId: org.springframework.cloud
               artifactId: spring-cloud-starter-gateway-mvc
-            - compatibility-range: "[3.5.0-M1,4.0.0-M1)"
+            - compatibility-range: "[3.5.0-M1,4.1.0-M1)"
               groupId: org.springframework.cloud
               artifactId: spring-cloud-starter-gateway-server-webmvc
           description: Provides a simple, yet effective way to route to APIs in Servlet-based applications. Provides cross-cutting concerns to those APIs such as security, monitoring/metrics, and resiliency.
@@ -1337,7 +1352,7 @@ initializr:
             - compatibility-range: "[3.4.0,3.5.0-M1)"
               groupId: org.springframework.cloud
               artifactId: spring-cloud-starter-gateway
-            - compatibility-range: "[3.5.0-M1,4.0.0-M1)"
+            - compatibility-range: "[3.5.0-M1,4.1.0-M1)"
               groupId: org.springframework.cloud
               artifactId: spring-cloud-starter-gateway-server-webflux
           description: Provides a simple, yet effective way to route to APIs in reactive applications. Provides cross-cutting concerns to those APIs such as security, monitoring/metrics, and resiliency.
@@ -1373,7 +1388,7 @@ initializr:
               href: https://docs.spring.io/spring-cloud-commons/reference/spring-cloud-commons/loadbalancer.html
     - name: Spring Cloud Circuit Breaker
       bom: spring-cloud
-      compatibilityRange: "[3.4.0,4.0.0-M1)"
+      compatibilityRange: "[3.4.0,4.1.0-M1)"
       content:
         - name: Resilience4J
           id: cloud-resilience4j
@@ -1385,7 +1400,7 @@ initializr:
               href: https://docs.spring.io/spring-cloud-circuitbreaker/reference/spring-cloud-circuitbreaker-resilience4j.html
     - name: Spring Cloud Messaging
       bom: spring-cloud
-      compatibilityRange: "[3.4.0,4.0.0-M1)"
+      compatibilityRange: "[3.4.0,4.1.0-M1)"
       content:
         - name: Cloud Bus
           id: cloud-bus
